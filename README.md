@@ -120,6 +120,26 @@ EFI/
 
 ---
 
+### ⚠️ SMBIOS & Apple Services
+
+> **Important:**  
+> For privacy and security reasons, I’ve deliberately left out or sanitized sensitive `config.plist` fields related to **Apple services**, such as:
+>
+> - `SerialNumber`  
+> - `MLB` (Main Logic Board serial)  
+> - `SystemUUID`  
+> - `ROM` (usually your MAC address)
+>
+> These values are required to enable services like iCloud, iMessage, FaceTime, and Apple Music.
+>
+> If you plan to use Apple services:
+> - You **must** generate your own values using [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
+> - Do **not** copy someone else’s values — this can cause Apple to block the configuration or even lock accounts.
+>
+> The `config.plist` included here is a **template**, meant to get you up and running. Customize these fields before logging into any Apple account.
+
+---
+
 ## 🧰 Tools & Resources
 
 - 📖 [Dortania OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)

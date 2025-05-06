@@ -29,8 +29,6 @@ This repository contains a working OpenCore EFI configuration for installing mac
 | Wi-Fi/Bluetooth  | Intel Wireless-AC 9560 (using AirportItlwm.kext) |
 | Audio            | Realtek ALC236 (via AppleALC.kext)     |
 
----
-
 ## 🔧 What's Working
 
 - macOS boots and runs stably
@@ -54,16 +52,12 @@ During testing, setting a **device-id** for the Intel UHD 620 broke every EFI I 
 
 This setup **prioritizes compatibility** — it works across multiple macOS versions. Advanced users can attempt to restore full iGPU acceleration by configuring the device properties correctly and are encouraged to contribute fixes or patches back to this repo to help others.
 
----
-
 ## 🚫 Known Issues
 
 - ❌ No hardware acceleration (UHD 620 disabled)
 - ❌ Fingerprint sensor (unsupported)
 - ⚠️ Thunderbolt 3 (untested)
 - ⚠️ SD card reader (may need extra config)
-
----
 
 ## 📁 EFI Folder Structure
 
@@ -118,8 +112,6 @@ EFI/
    - Boot from the USB, follow macOS installer steps.
    - After install, copy EFI from USB to internal drive using MountEFI.
 
----
-
 ### ⚠️ SMBIOS & Apple Services
 
 **Important:**  
@@ -144,8 +136,6 @@ The `config.plist` included here is a **template**, meant to get you up and runn
 - 🔐 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) – generate valid serials
 - 🧪 [Hackintool](https://github.com/headkaze/Hackintool) – diagnostics & USB mapping
 
----
-
 ## 🙏 Credits
 
 - [Acidanthera](https://github.com/acidanthera) – OpenCore, Lilu, WhateverGreen, AppleALC, etc.
@@ -153,15 +143,11 @@ The `config.plist` included here is a **template**, meant to get you up and runn
 - [OpenIntelWireless](https://github.com/OpenIntelWireless) – Intel Wi-Fi kexts
 - [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C) – Trackpad and I2C support
 
----
-
 ## 🤝 Contribute
 
 This repo works well out of the box, but there’s room for improvement — especially enabling proper graphics acceleration.
 
 If you improve compatibility, enable UHD 620 acceleration, or fix other issues, please submit a pull request so others benefit too!
-
----
 
 ## 📄 License
 

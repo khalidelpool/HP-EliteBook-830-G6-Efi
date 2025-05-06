@@ -2,6 +2,7 @@
 
 This repository contains a working OpenCore EFI configuration for installing macOS on the **HP EliteBook 830 G6**. It is tailored for simplicity, stability, and a high success rate — even if it means sacrificing some GPU functionality for now.
 
+![EFI Cover](assets/cover.webp)
 ---
 
 ## ✅ Supported macOS Versions

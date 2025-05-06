@@ -1,203 +1,143 @@
-HP EliteBook 830 G6 – OpenCore EFI for macOS
-This repository provides a pre-configured OpenCore EFI setup tailored for the HP EliteBook 830 G6. It aims to simplify the Hackintosh process for users by offering a ready-to-use configuration.
+# HP EliteBook 830 G6 – OpenCore EFI for macOS
 
-✅ Supported macOS Versions
-macOS Catalina (10.15)
+This repository contains a working OpenCore EFI configuration for installing macOS on the **HP EliteBook 830 G6**. It is tailored for stability, compatibility, and ease of use.
 
-macOS Big Sur (11)
+---
 
-macOS Monterey (12)
+## ✅ Supported macOS Versions
 
-macOS Ventura (13)
+- macOS Catalina (10.15)
+- macOS Big Sur (11)
+- macOS Monterey (12)
+- macOS Ventura (13)
+- macOS Sonoma (14)
 
-macOS Sonoma (14)
-osxlatitude.com
+> **Note:** Make sure you’re using an OpenCore version compatible with the macOS version you intend to install.
 
-Note: Ensure to use the corresponding OpenCore version compatible with your macOS version.
-InsanelyMac
+---
 
-💻 Hardware Specifications
-Model: HP EliteBook 830 G6
+## 💻 Hardware Specifications
 
-CPU: Intel Core i5-8265U / i7-8565U (Whiskey Lake)
+| Component        | Details                                |
+|------------------|----------------------------------------|
+| Model            | HP EliteBook 830 G6                    |
+| CPU              | Intel Core i5-8265U / i7-8565U (Whiskey Lake) |
+| GPU              | Intel UHD Graphics 620                 |
+| RAM              | 8GB / 16GB DDR4                        |
+| Storage          | NVMe SSD (e.g., WD SN730)              |
+| Wi-Fi/Bluetooth  | Intel Wireless-AC 9560 (using AirportItlwm.kext) |
+| Audio            | Realtek ALC236 (via AppleALC.kext)     |
 
-GPU: Intel UHD Graphics 620
+---
 
-RAM: 8GB / 16GB DDR4
+## 🔧 What's Working
 
-Storage: NVMe SSD (e.g., Western Digital SN730)
+- Intel UHD Graphics 620 (full acceleration)
+- Audio (internal speakers, mic, headphone jack)
+- Internal keyboard and trackpad (multi-touch gestures)
+- Wi-Fi + Bluetooth (AirportItlwm)
+- All USB ports (USBToolBox + UTBMap)
+- Battery status monitoring
+- Sleep & Wake
+- Ethernet (IntelMausi)
+- Webcam
+- Function keys
 
-Wi-Fi/Bluetooth: Intel Wireless-AC 9560 (requires AirportItlwm.kext)
+---
 
-Audio: Realtek ALC236 (via AppleALC.kext)
-Reddit
-+2
-TonyMacx86
-+2
-GitHub
-+2
-Reddit
-+1
-osxlatitude.com
-+1
-GitHub
+## 🚫 Known Issues
 
-🔧 What's Working
-Intel UHD Graphics 620 with full acceleration
+- Fingerprint sensor (unsupported)
+- Thunderbolt 3 (untested)
+- SD card reader (may need extra config)
 
-Audio (speakers, headphone jack, microphone)
+---
 
-Internal keyboard and trackpad (including gestures)
+## 📁 EFI Folder Structure
 
-Wi-Fi and Bluetooth (using AirportItlwm.kext)
-
-USB ports (mapped with USBToolBox.kext and UTBMap.kext)
-
-Battery status monitoring
-
-Sleep and wake functionality
-
-Ethernet (via IntelMausi.kext)
-
-Webcam
-
-Function keys
-GitHub
-+12
-GitHub
-+12
-EliteMacx86 Forum
-+12
-
-🚫 Known Issues
-Fingerprint sensor is not supported
-
-Thunderbolt 3 functionality is untested
-
-SD card reader may require additional configuration
-Reddit
-+1
-osxlatitude.com
-+1
-
-📁 EFI Folder Structure
-bash
-Copy
-Edit
 EFI/
 ├── BOOT/
-│   └── BOOTx64.efi
+│ └── BOOTx64.efi
 └── OC/
-    ├── ACPI/
-    │   ├── SSDT-AWAC.aml
-    │   ├── SSDT-EC-USBX-LAPTOP.aml
-    │   ├── SSDT-PLUG-DRTNIA.aml
-    │   └── SSDT-PNLF.aml
-    ├── Drivers/
-    │   ├── HfsPlus.efi
-    │   └── OpenRuntime.efi
-    ├── Kexts/
-    │   ├── AirportItlwm.kext
-    │   ├── AppleALC.kext
-    │   ├── IntelMausi.kext
-    │   ├── Lilu.kext
-    │   ├── NVMeFix.kext
-    │   ├── SMCProcessor.kext
-    │   ├── SMCSuperIO.kext
-    │   ├── USBToolBox.kext
-    │   ├── UTBMap.kext
-    │   ├── VirtualSMC.kext
-    │   ├── VoodooI2C.kext
-    │   ├── VoodooI2CHID.kext
-    │   ├── VoodooInput.kext
-    │   ├── VoodooPS2Controller.kext
-    │   └── WhateverGreen.kext
-    ├── Tools/
-    │   └── OpenShell.efi
-    └── config.plist
-🛠️ Installation Guide
-Prepare macOS Installer:
+├── ACPI/
+├── Drivers/
+├── Kexts/
+├── Tools/
+└── config.plist
 
-Download the desired macOS version from the App Store or Apple's website.
+markdown
+Copy
+Edit
 
-Create a bootable USB installer using the createinstallmedia command.
-osxlatitude.com
+Main included SSDTs:
+- `SSDT-AWAC.aml`
+- `SSDT-EC-USBX-LAPTOP.aml`
+- `SSDT-PLUG-DRTNIA.aml`
+- `SSDT-PNLF.aml`
 
-Mount EFI Partition:
+Main kexts:
+- `AirportItlwm.kext`
+- `AppleALC.kext`
+- `IntelMausi.kext`
+- `Lilu.kext`
+- `NVMeFix.kext`
+- `VirtualSMC.kext` (+ sensors)
+- `VoodooI2C`, `VoodooI2CHID`, `VoodooPS2Controller.kext`
+- `WhateverGreen.kext`
 
-Use tools like MountEFI or diskutil to mount the EFI partition of the USB installer.
+---
 
-Copy EFI Folder:
+## 🛠️ Installation Steps
 
-Replace the contents of the mounted EFI partition with the EFI folder from this repository.
+1. **Create macOS Installer:**
+   - Use a Mac or Hackintosh to download macOS from the App Store.
+   - Use `createinstallmedia` to make a bootable USB.
 
-Configure BIOS Settings:
+2. **Mount EFI Partition:**
+   - Use `diskutil` or [MountEFI](https://github.com/corpnewt/MountEFI).
 
-Disable Secure Boot.
+3. **Copy EFI Folder:**
+   - Replace the USB EFI with the `EFI` folder from this repo.
 
-Enable UEFI Boot Mode.
+4. **BIOS Settings:**
+   - Disable **Secure Boot**
+   - Enable **UEFI Boot**
+   - Disable **Fast Boot**
+   - Set **SATA mode** to **AHCI**
+   - Enable **VT-d** *(optional, if using DisableIoMapper)*
 
-Disable Fast Boot.
+5. **Install macOS:**
+   - Boot from USB, install macOS.
+   - After installation, copy the EFI to the internal drive.
 
-Enable VT-d (if using DisableIoMapper in config.plist).
+---
 
-Set SATA mode to AHCI.
+## 🧰 Tools & Resources
 
-Boot and Install macOS:
+- 📖 [Dortania OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
+- 🛠️ [ProperTree](https://github.com/corpnewt/ProperTree) – for editing `config.plist`
+- 🔐 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) – generate SMBIOS serials
+- 🧪 [Hackintool](https://github.com/headkaze/Hackintool) – kexts, patching, diagnostics
 
-Insert the USB installer into the HP EliteBook 830 G6.
+---
 
-Boot from the USB and select the macOS installer in OpenCore.
+## 🙏 Credits
 
-Follow the on-screen instructions to install macOS.
-Reddit
-+4
-osxlatitude.com
-+4
-HP Support
-+4
+- [Acidanthera](https://github.com/acidanthera) – OpenCore, Lilu, WhateverGreen, etc.
+- [Dortania](https://dortania.github.io) – Legendary documentation
+- [OpenIntelWireless](https://github.com/OpenIntelWireless) – Intel Wi-Fi support
+- [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C) – Trackpad and I2C support
 
-Post-Installation:
+---
 
-After installation, mount the EFI partition of the internal drive.
+## 📬 Contribute
 
-Copy the EFI folder from the USB to the internal drive's EFI partition.
-osxlatitude.com
+Found a bug? Improved something? Pull requests and issues are welcome!
 
-🧰 Tools and Resources
-Dortania OpenCore Install Guide: Comprehensive guide for setting up OpenCore.
+---
 
-ProperTree: Cross-platform plist editor for editing config.plist.
+## 📄 License
 
-GenSMBIOS: Tool to generate SMBIOS information.
+MIT License. See the [LICENSE](LICENSE) file.
 
-Hackintool: Utility for patching and gathering system information.
-HP Support
-+2
-InsanelyMac
-+2
-Dortania
-+2
-osxlatitude.com
-+1
-InsanelyMac
-+1
-olarila.com
-+1
-EliteMacx86 Forum
-+1
-
-🤝 Credits
-Acidanthera: For OpenCore, Lilu, AppleALC, VirtualSMC, and other essential kexts.
-
-Dortania: For their detailed OpenCore installation guide.
-
-OpenIntelWireless: For AirportItlwm.kext enabling Intel Wi-Fi support.
-
-VoodooI2C Project: For touchpad and touchscreen support.
-GitHub
-
-📬 Feedback and Contributions
-If you encounter issues or have suggestions for improvement, feel free to open an issue or submit a pull request. Your contributions are welcome!
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
